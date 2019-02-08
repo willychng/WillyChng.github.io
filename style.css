@@ -1,3 +1,15 @@
-.font1 {
-  font-family: 'Abel';
+h1 {
+    font-weight: 500;
+}
+body {
+    font-family: 'Segoe UI'; font-size: 1rem;
+    color: #333;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
