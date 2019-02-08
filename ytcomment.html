@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>yttriangle</title>
-
-  <style>
-  h1{
-      font-weight: 500;
-  }
-  body {
-      font-family: 'Segoe UI'; font-size: 1rem;
-      color: #333;
-      margin-left: 100px;
-  }
-  </style>
+  <head>
+    <title>yttriangle</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+    body {
+        margin-left: 100px;
+    }
+    </style>
   </head>
-</head>
-<body>
-  <h1>Youtube Comment Triangle Thingy Generator</h1>
-  <hr>
-  <input type="text" id="input" value="sample">
+  <body>
+    <h1>Youtube Comment Triangle Thingy Generator</h1>
+    <hr>
+    <input type="text" id="input" value="sample">
 
-  <button type="button" onclick="myFunction()">Submit</button>
+    <button type="button" onclick="myFunction()">Submit</button>
 
-  <p id="output"></p>
+    <p id="output"></p>
 
-  <script>
-  function myFunction() {
-    let inp = document.getElementById("input").value;
-    output = inp[0];
-    for(i = 2; i <= inp.length; i++) {
-      output += "<br>" + inp.substr(0,i);
+    <script>
+    function myFunction() {
+      let inp = document.getElementById("input").value;
+      output = inp[0];
+      for(i = 2; i <= inp.length; i++) {
+        output += "<br>" + inp.substr(0,i);
+      }
+      for(i = inp.length - 1; i >= 1; i--) {
+        output += "<br>" + inp.substr(0,i);
+      }
+      document.getElementById("output").innerHTML = output;
     }
-    for(i = inp.length - 1; i >= 1; i--) {
-      output += "<br>" + inp.substr(0,i);
-    }
-    document.getElementById("output").innerHTML = output;
-  }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
