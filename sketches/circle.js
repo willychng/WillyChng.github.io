@@ -14,9 +14,10 @@ let redP = -1;
 let greenP = 1;
 let blueP = -1;
 
-let btnPause, btnSubmit, btnColour, inpCount;
+let btnPause, btnSubmit, btnColour, btnPAll, inpCount;
 let isPaused = 0;
-let isColourChange = 0;
+let isColourChange = 1;
+let isPAll = 0;
 
 function setup() {
   createCanvas(width, height);
@@ -38,6 +39,13 @@ function setup() {
   btnColour.style('background-color: lime');
   btnColour.mousePressed(toggleColour);
 
+  btnPAll = createButton('pauseAll');
+  btnPAll.position(795, 20);
+  btnPAll.style('font-size: 32px');
+  btnPAll.style('border: none');
+  btnPAll.style('background-color: lime');
+  btnPAll.mousePressed(pauseAll);
+
   btnSubmit = createButton('Submit');
   btnSubmit.position(600, 110);
   btnSubmit.style('font-size', '32px');
@@ -52,6 +60,7 @@ function setup() {
 }
 
 function draw() {
+  if (!isPAll) {
   background(0, 169, 169);
   fill(0, 0, 30);
   text("Made by Willy Ch'ng", 700, 450);
@@ -64,6 +73,7 @@ function draw() {
   draw_lines(count);
   if (!isPaused)
     count+=0.02;
+  }
 }
 
 function draw_lines(count) {
@@ -120,8 +130,21 @@ function toggleColour() {
   }
 }
 
+function pauseAll() {
+  if (isPAll) {
+    isPAll = 0;
+    btnPAll.style('background-color: lime');
+  } else {
+    isPAll = 1;
+    btnPAll.style('background-color: red');
+  }
+}
+
 function submit() {
   if (!isNaN(inpCount.value())) {
     count = Number(inpCount.value());
+    isPAll = 0;
+    draw();
+    isPAll = 1;
   }
 }
