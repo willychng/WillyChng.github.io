@@ -143,8 +143,10 @@ function pauseAll() {
 function submit() {
   if (!isNaN(inpCount.value())) {
     count = Number(inpCount.value());
-    isPAll = 0;
-    draw();
-    isPAll = 1;
+    if (isPAll){
+      isPAll = 0;
+      draw();
+      isPAll = 1;
+    }
   }
 }
