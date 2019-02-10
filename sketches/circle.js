@@ -14,8 +14,9 @@ let redP = -1;
 let greenP = 1;
 let blueP = -1;
 
-let btnPause, btnSubmit, inpCount;
+let btnPause, btnSubmit, btnColour, inpCount;
 let isPaused = 0;
+let isColourChange = 0;
 
 function setup() {
   createCanvas(width, height);
@@ -25,10 +26,17 @@ function setup() {
 
   btnPause = createButton('pause');
   btnPause.position(480, 20);
-  btnPause.style('font-size', '32px');
+  btnPause.style('font-size: 32px');
   btnPause.style('border: none');
   btnPause.style('background-color: lime');
   btnPause.mousePressed(pause);
+
+  btnColour = createButton('toggleColour');
+  btnColour.position(590, 20);
+  btnColour.style('font-size: 32px');
+  btnColour.style('border: none');
+  btnColour.style('background-color: lime');
+  btnColour.mousePressed(toggleColour);
 
   btnSubmit = createButton('Submit');
   btnSubmit.position(600, 110);
@@ -54,12 +62,16 @@ function draw() {
   text('count = ' + count.toFixed(2), 480, 100);
 
   draw_lines(count);
-  if(!isPaused)
+  if (!isPaused)
     count+=0.02;
 }
 
 function draw_lines(count) {
-  c = update_color();
+  if (isColourChange) {
+    c = update_color();
+  } else {
+    c = color(r, g, b);
+  }
   for (j=0; j<360;j++) {
     stroke(c);
     line(dotX(j), dotY(j), dotX(j*count), dotY(j*count));
@@ -95,6 +107,16 @@ function pause() {
   } else {
     isPaused = 1;
     btnPause.style('background-color: red');
+  }
+}
+
+function toggleColour() {
+  if (!isColourChange) {
+    isColourChange = 1;
+    btnColour.style('background-color: lime');
+  } else {
+    isColourChange = 0;
+    btnColour.style('background-color: red');
   }
 }
 
