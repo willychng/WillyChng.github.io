@@ -40,11 +40,13 @@ function setup() {
   inpCount.size(100);
   inpCount.position(480, 110);
 
+  text("Made by Willy Ch'ng", 0, 450);
 }
 
 function draw() {
   background(0, 169, 169);
   fill(0, 0, 30);
+  text("Made by Willy Ch'ng", 700, 450);
   noStroke();
   rect(0, 0, 460, 460);
 
