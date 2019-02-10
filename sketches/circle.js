@@ -3,7 +3,6 @@ let height = 460;
 let circleX=230;
 let circleY=230;
 let rad=210;
-
 let count = 0;
 
 let c;
