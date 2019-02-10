@@ -1,33 +1,50 @@
-var w=460;
-var h=450;
-var circleX=230;
-var circleY=h/2;
-var r=210;
+let width = 1000;
+let height = 460;
+let circleX=230;
+let circleY=230;
+let rad=210;
 
-var count = 0;
+let count = 0;
 
-var c;
-var cr = 65;
-var cg = 15;
-var cb = 235;
-var redP = -1;
-var greenP = 1;
-var blueP = -1;
+let c;
+let r = 65;
+let g = 15;
+let b = 235;
+let redP = -1;
+let greenP = 1;
+let blueP = -1;
+
+let btnPause, btnSubmit, inpCount;
+let isPaused = 0;
 
 function setup() {
-  createCanvas(460, 450);
+  createCanvas(width, height);
   background(0, 169, 169);
   noFill();
-  ellipse(circleX, circleY, 2*r, 2*r);
+  ellipse(circleX, circleY, 2*rad, 2*rad);
+
+  btnPause = createButton('pause');
+  btnPause.position(480, 20);
+  btnPause.mousePressed(pause);
+
+  btnSubmit = createButton('Submit');
+  btnSubmit.position(660, 60);
+  btnSubmit.mousePressed(submit);
+
+  inpCount = createInput('');
+  inpCount.position(480, 60);
+
 }
 
 function draw() {
   background(0, 169, 169);
   fill(0, 0, 30);
-  rect(circleX-r-20, circleY-r-50, 2*r+100, 2*r+100);
+  noStroke();
+  rect(0, 0, 460, 460);
 
   draw_lines(count);
-  count+=0.02;
+  if(!isPaused)
+    count+=0.02;
 }
 
 function draw_lines(count) {
@@ -39,23 +56,37 @@ function draw_lines(count) {
 }
 
 function update_color() {
-  cr += redP;
-  cg += greenP;
-  cb += blueP;
+  r += redP;
+  g += greenP;
+  b += blueP;
 
-  if (cb <= 0 || cb >= 255)
+  if (b <= 0 || b >= 255)
     blueP = -blueP;
-  if (cg <= 0 || cg >= 200)
+  if (g <= 0 || g >= 200)
     greenP = -greenP;
-  if (cr <= 0 || cr >= 255)
+  if (r <= 0 || r >= 255)
     redP = -redP;
-  return color(cr, cg, cb);
+  return color(r, g, b);
 }
 
 function dotX(a) {
-  return circleX + r * cos(a * PI / 180);
+  return circleX + rad * cos(a * PI / 180);
 }
 
 function dotY(a) {
-  return circleY + r * sin(a * PI / 180);
+  return circleY + rad * sin(a * PI / 180);
+}
+
+function pause() {
+  if (isPaused) {
+    isPaused = 0;
+  } else {
+    isPaused = 1;
+  }
+}
+
+function submit() {
+  if (!isNaN(inpCount.value())) {
+    count = Number(inpCount.value());
+  }
 }
