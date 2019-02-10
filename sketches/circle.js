@@ -25,14 +25,20 @@ function setup() {
 
   btnPause = createButton('pause');
   btnPause.position(480, 20);
+  btnPause.style('font-size', '32px');
+  btnPause.style('border: none');
+  btnPause.style('background-color: lime');
   btnPause.mousePressed(pause);
 
   btnSubmit = createButton('Submit');
-  btnSubmit.position(660, 60);
+  btnSubmit.position(600, 110);
+  btnSubmit.style('font-size', '32px');
   btnSubmit.mousePressed(submit);
 
   inpCount = createInput('');
-  inpCount.position(480, 60);
+  inpCount.style('font-size', '32px');
+  inpCount.size(100);
+  inpCount.position(480, 110);
 
 }
 
@@ -41,6 +47,9 @@ function draw() {
   fill(0, 0, 30);
   noStroke();
   rect(0, 0, 460, 460);
+
+  textSize(32);
+  text('count = ' + count.toFixed(2), 480, 100);
 
   draw_lines(count);
   if(!isPaused)
@@ -80,8 +89,10 @@ function dotY(a) {
 function pause() {
   if (isPaused) {
     isPaused = 0;
+    btnPause.style('background-color: lime');
   } else {
     isPaused = 1;
+    btnPause.style('background-color: red');
   }
 }
 
