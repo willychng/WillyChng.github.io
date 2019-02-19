@@ -1,8 +1,8 @@
-let width = 1000;
-let height = 460;
-let circleX=230;
-let circleY=230;
-let rad=210;
+let widthv = 0;
+let heightv = 0;
+let circleX = 0;
+let circleY = 0;
+let rad = 0;
 let count = 0;
 
 let c;
@@ -19,55 +19,58 @@ let isColourChange = 1;
 let isPAll = 0;
 
 function setup() {
-  createCanvas(width, height);
+  createCanvas(windowWidth, windowHeight);
+  widthv = width;
+  heightv = height;
+  circleX = heightv/2;
+  circleY = heightv/2;
+  rad = heightv/2 - 20
   background(0, 169, 169);
   noFill();
   ellipse(circleX, circleY, 2*rad, 2*rad);
 
   btnPause = createButton('pause');
-  btnPause.position(480, 20);
+  btnPause.position(640, 20);
   btnPause.style('font-size: 32px');
   btnPause.style('border: none');
   btnPause.style('background-color: lime');
   btnPause.mousePressed(pause);
 
   btnColour = createButton('toggleColour');
-  btnColour.position(590, 20);
+  btnColour.position(750, 20);
   btnColour.style('font-size: 32px');
   btnColour.style('border: none');
   btnColour.style('background-color: lime');
   btnColour.mousePressed(toggleColour);
 
   btnPAll = createButton('pauseAll');
-  btnPAll.position(795, 20);
+  btnPAll.position(955, 20);
   btnPAll.style('font-size: 32px');
   btnPAll.style('border: none');
   btnPAll.style('background-color: lime');
   btnPAll.mousePressed(pauseAll);
 
   btnSubmit = createButton('Submit');
-  btnSubmit.position(600, 110);
+  btnSubmit.position(760, 110);
   btnSubmit.style('font-size', '32px');
   btnSubmit.mousePressed(submit);
 
   inpCount = createInput('');
   inpCount.style('font-size', '32px');
   inpCount.size(100);
-  inpCount.position(480, 110);
-
-  text("Made by Willy Ch'ng", 0, 450);
+  inpCount.position(640, 110);
 }
 
 function draw() {
   if (!isPAll) {
   background(0, 169, 169);
   fill(0, 0, 30);
-  text("Made by Willy Ch'ng", 700, 450);
+  text("Made by Willy Ch'ng", width-310, heightv-30);
   noStroke();
-  rect(0, 0, 460, 460);
+  rect(0, 0, height, height);
 
   textSize(32);
-  text('count = ' + count.toFixed(2), 480, 100);
+  text('count = ' + count.toFixed(2), 640, 100);
 
   draw_lines(count);
   if (!isPaused)
