@@ -1,15 +1,13 @@
-let width = 1300;
-let height = 550;
 let pointX,pointY;
 let dots;
 
 function setup(){
-  createCanvas(width, height);
+  createCanvas(windowWidth, windowHeight);
   noFill();
   stroke(255);
   pointX = random(width);
   pointY = random(height);
-  dots = new Array(450);
+  dots = new Array(1000);
   for(i = 0; i < dots.length; i++){
     dots[i] = new Dot();
   }
@@ -22,38 +20,51 @@ function draw(){
 }
 
 class Dot {
-
   constructor(){
-    this.x = random(width+30);
-    this.y = random(height+30);
-    this.speedX = random(0.5,2.1);
-    this.speedY = random(0.25,1.5);
-    this.size = random(6,35);
+    this.start();
   }
 
   move() {
     if((this.x >= pointX-10) && (this.x <= pointX+10) && (this.y >= pointY-10) && (this.y <= pointY+10)){
-      this.x = random(width+30);
-      this.y = random(height+30);
+      this.start();
     }
     this.angle = atan2(pointY - this.y, pointX - this.x);
-    this.x += cos(this.angle)*this.speedX;
-    this.y += sin(this.angle)*this.speedY;
+    this.x += cos(this.angle)*this.speed;
+    this.y += sin(this.angle)*this.speed;
   }
 
   show() {
     ellipse(this.x,this.y,this.size);
   }
+
+  start(){
+    this.x = random(-30,width+30);
+    this.y = random(-30,height+30);
+    this.speed = random(0.45,3.2);
+    this.size = random(40,6);
+  }
 }
 
-function move(){
+function mousePressed() {
+  pointX = mouseX;
+  pointY = mouseY;
+}
+
+function move() {
   for(i = 0; i < dots.length; i++){
     dots[i].move();
   }
 }
 
-function show(){
+function show() {
   for(i = 0; i < dots.length; i++){
     dots[i].show();
   }
+}
+
+function sigmoidX(k) {
+  return (width+(10))/(2+exp(k));
+}
+function sigmoidY(k) {
+  return height/(1+exp(k));
 }
