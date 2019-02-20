@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+      body, html {
+        margin: 0px;
+        height: 100%;
+        overflow: hidden;
+      }
+    .icon {
+      width: 25px;
+      height: 25px;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .bg-image, .bg-text{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .bg-image {
+      background-image: url("images/landscape.jpg");
+      filter: blur(3px);
+      height: 100%;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    h1, h2, p, img{
+      margin-left: 10px;
+    }
+    .bg-text {
+      z-index: 2;
+      padding: 0;
+      margin: 100px 100px;
+      width: 80%;
+      height: 70%;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+    </style>
+  </head>
+  <body>
+    <div class=container>
+      <div class="bg-image"></div>
+
+      <div class="bg-text">
+        <h2>People who inspired me to do programming:</h2>
+        <ul>
+            <li><a><img class = "icon" src="images/carykh.jpg">sd</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

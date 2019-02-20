@@ -1,16 +1,17 @@
-let width = 1000;
+let width;
 let height = 500;
 
 let values;
 let sorted;
 let i = 0;
 let j = 0;
-let count = 500;
-let speed = 20;
+let count = 1000;
+let speed = 1;
 let lineWidth;
 
 function setup() {
-  createCanvas(width, height);
+  createCanvas(windowWidth, height);
+  width = windowWidth;
   background(0);
   colorMode(HSB, height, 1, 1);
   lineWidth = float(width)/count;
@@ -25,7 +26,7 @@ function setup() {
 
 function draw() {
   background(0);
-  for (k = 1; k <= speed; k++) {
+  for (k = 1; k <= count*speed; k++) {
     if (i < values.length) {
       let a = values[j];
       let b = values[j+1];

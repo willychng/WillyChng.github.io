@@ -1,2 +1,65 @@
-About Me:
-:/
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>willy's website</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+      body, html {
+        margin: 0px;
+        height: 100%;
+        overflow: hidden;
+      }
+      h1, h2, p, a{
+        margin-left: 10px;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .bg-image, .bg-text{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .bg-image {
+        background-image: url("images/landscape.jpg");
+        filter: blur(3px);
+        height: 100%;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      .bg-text {
+        z-index: 2;
+        padding: 0;
+        margin: 100px 100px;
+        width: 80%;
+        height: 70%;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class=container>
+      <div class="bg-image"></div>
+      <div class="bg-text">
+        <h2>People who inspired me to do programming:</h2>
+        <ul>
+            <li><a href="https://www.youtube.com/user/carykh"><img class="icon" src="https://yt3.ggpht.com/a-/AAuE7mBOYKIAQuG3uRV2_WUrwFcig4CwhXIS-jr_nA=s288-mo-c-c0xffffffff-rj-k-no">carykh</a></li>
+            <li><a href="https://www.youtube.com/user/shiffman"><img class="icon" src="https://yt3.ggpht.com/a-/AAuE7mC56ctnjTBFVmFaDttL3sC26U2CRiICqBgJ-g=s288-mo-c-c0xffffffff-rj-k-no">The Coding Train</a></li>
+            <li><a href="https://www.youtube.com/channel/UCtHaxi4GTYDpJgMSGy7AeSw"><img class="icon" src="https://yt3.ggpht.com/a-/AAuE7mAVwxNshQ-XLsZbIqgqKuQ07s3HAVPx0Y2H2g=s288-mo-c-c0xffffffff-rj-k-no">Michael Reeves</a></li>
+            <li><a href="https://www.youtube.com/channel/UC0e3QhIYukixgh5VVpKHH9Q"><img class="icon" src="https://yt3.ggpht.com/a-/AAuE7mDqNiP8U5QQhtyBJlZ_ddlq5062m8qEC2kVAA=s288-mo-c-c0xffffffff-rj-k-no">Coding Bullet</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

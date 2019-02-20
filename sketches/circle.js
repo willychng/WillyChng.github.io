@@ -1,5 +1,5 @@
-let widthv = 0;
-let heightv = 0;
+let width = 0;
+let height = 0;
 let circleX = 0;
 let circleY = 0;
 let rad = 0;
@@ -20,57 +20,27 @@ let isPAll = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  widthv = width;
-  heightv = height;
-  circleX = heightv/2;
-  circleY = heightv/2;
-  rad = heightv/2 - 20
-  background(0, 169, 169);
+  width = windowWidth;
+  height = windowHeight;
+  circleX = height/2;
+  circleY = height/2;
+  rad = height/2 - 20
   noFill();
   ellipse(circleX, circleY, 2*rad, 2*rad);
 
-  btnPause = createButton('pause');
-  btnPause.position(640, 20);
-  btnPause.style('font-size: 32px');
-  btnPause.style('border: none');
-  btnPause.style('background-color: lime');
-  btnPause.mousePressed(pause);
-
-  btnColour = createButton('toggleColour');
-  btnColour.position(750, 20);
-  btnColour.style('font-size: 32px');
-  btnColour.style('border: none');
-  btnColour.style('background-color: lime');
-  btnColour.mousePressed(toggleColour);
-
-  btnPAll = createButton('pauseAll');
-  btnPAll.position(955, 20);
-  btnPAll.style('font-size: 32px');
-  btnPAll.style('border: none');
-  btnPAll.style('background-color: lime');
-  btnPAll.mousePressed(pauseAll);
-
-  btnSubmit = createButton('Submit');
-  btnSubmit.position(760, 110);
-  btnSubmit.style('font-size', '32px');
-  btnSubmit.mousePressed(submit);
-
-  inpCount = createInput('');
-  inpCount.style('font-size', '32px');
-  inpCount.size(100);
-  inpCount.position(640, 110);
+  sss();
 }
 
 function draw() {
   if (!isPAll) {
   background(0, 169, 169);
   fill(0, 0, 30);
-  text("Made by Willy Ch'ng", width-310, heightv-30);
+  text("Made by Willy Ch'ng", width-310, height-30);
   noStroke();
   rect(0, 0, height, height);
 
   textSize(32);
-  text('count = ' + count.toFixed(2), 640, 100);
+  text('count = ' + count.toFixed(2), height+15, 100);
 
   draw_lines(count);
   if (!isPaused)
@@ -151,4 +121,37 @@ function submit() {
       isPAll = 1;
     }
   }
+}
+
+function sss(){
+  btnPause = createButton('pause');
+  btnPause.position(height+15, 20);
+  btnPause.style('font-size: 32px');
+  btnPause.style('border: none');
+  btnPause.style('background-color: lime');
+  btnPause.mousePressed(pause);
+
+  btnColour = createButton('toggleColour');
+  btnColour.position(btnPause.x + 110, 20);
+  btnColour.style('font-size: 32px');
+  btnColour.style('border: none');
+  btnColour.style('background-color: lime');
+  btnColour.mousePressed(toggleColour);
+
+  btnPAll = createButton('pauseAll');
+  btnPAll.position(btnColour.x + 205, 20);
+  btnPAll.style('font-size: 32px');
+  btnPAll.style('border: none');
+  btnPAll.style('background-color: lime');
+  btnPAll.mousePressed(pauseAll);
+
+  inpCount = createInput('');
+  inpCount.style('font-size', '32px');
+  inpCount.size(115);
+  inpCount.position(height+15, 120);
+
+  btnSubmit = createButton('Submit');
+  btnSubmit.position(inpCount.x + 130, 120);
+  btnSubmit.style('font-size', '32px');
+  btnSubmit.mousePressed(submit);
 }
