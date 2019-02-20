@@ -7,7 +7,7 @@ function setup(){
   stroke(255);
   pointX = random(width);
   pointY = random(height);
-  dots = new Array(1000);
+  dots = new Array(300);
   for(i = 0; i < dots.length; i++){
     dots[i] = new Dot();
   }
