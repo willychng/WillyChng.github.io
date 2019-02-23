@@ -1,9 +1,7 @@
-let width = 0;
-let height = 0;
-let circleX = 0;
-let circleY = 0;
-let rad = 0;
+let width, height, circleX, circleY, rad, circleCan;
 let count = 0;
+let countSpeed = 0.02;
+let j = 0;
 
 let c;
 let r = 65;
@@ -20,13 +18,15 @@ let isPAll = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  circleCan = createGraphics(windowHeight, windowHeight);
   width = windowWidth;
   height = windowHeight;
   circleX = height/2;
   circleY = height/2;
   rad = height/2 - 20
   noFill();
-  ellipse(circleX, circleY, 2*rad, 2*rad);
+
+  circleCan.background(0, 0, 30);
 
   sss();
 }
@@ -37,15 +37,16 @@ function draw() {
   fill(0, 0, 30);
   text("Made by Willy Ch'ng", width-310, height-30);
   noStroke();
-  rect(0, 0, height, height);
 
   textSize(32);
   text('count = ' + count.toFixed(2), height+15, 100);
 
+  circleCan.background(0, 0, 30);
   draw_lines(count);
   if (!isPaused)
-    count+=0.02;
+    count+=countSpeed;
   }
+  image(circleCan, 0, 0);
 }
 
 function draw_lines(count) {
@@ -54,9 +55,10 @@ function draw_lines(count) {
   } else {
     c = color(r, g, b);
   }
-  for (j=0; j<360;j++) {
-    stroke(c);
-    line(dotX(j), dotY(j), dotX(j*count), dotY(j*count));
+  for (i=1; i<=360;i++) {
+    circleCan.stroke(c);
+    circleCan.line(dotX(j), dotY(j), dotX(j*count), dotY(j*count));
+    j++;
   }
 }
 
@@ -145,7 +147,7 @@ function sss(){
   btnPAll.style('background-color: lime');
   btnPAll.mousePressed(pauseAll);
 
-  inpCount = createInput('');
+  inpCount = createInput('', 'number');
   inpCount.style('font-size', '32px');
   inpCount.size(115);
   inpCount.position(height+15, 120);
