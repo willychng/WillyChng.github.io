@@ -18,23 +18,12 @@
         height: 100%;
         position: relative;
       }
-      .bg-image, .bg-text{
+      .bg-text{
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-      }
-      .bg-image {
-        background-image: url("images/landscape.jpg");
-        filter: blur(3px);
-        height: 100%;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        background-size: 100%;
-      }
-
-      .bg-text {
         z-index: 2;
         padding: 0;
         margin: 100px 100px;
@@ -46,7 +35,6 @@
   </head>
   <body>
     <div class=container>
-      <div class="bg-image"></div>
 
       <div class="bg-text">
         <h1 style="margin: 10px;">Hello!</h1>
