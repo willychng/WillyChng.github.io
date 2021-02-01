@@ -1,6 +1,6 @@
 let width, height, circleX, circleY, rad, circleCan;
 let count = 0;
-let countSpeed = 0.02;
+let countSpeed = 0.002;
 let j = 0;
 
 let c;
@@ -55,10 +55,9 @@ function draw_lines(count) {
   } else {
     c = color(r, g, b);
   }
-  for (i=1; i<=360;i++) {
+  for (i=1; i<=720;i++) {
     circleCan.stroke(c);
-    circleCan.line(dotX(j), dotY(j), dotX(j*count), dotY(j*count));
-    j++;
+    circleCan.line(dotX(i), dotY(i), dotX(i*count), dotY(i*count));
   }
 }
 
@@ -77,11 +76,11 @@ function update_color() {
 }
 
 function dotX(a) {
-  return circleX + rad * cos(a * PI / 180);
+  return circleX + rad * cos(a * PI / 180 / 2);
 }
 
 function dotY(a) {
-  return circleY + rad * sin(a * PI / 180);
+  return circleY + rad * sin(a * PI / 180 / 2);
 }
 
 function pause() {
