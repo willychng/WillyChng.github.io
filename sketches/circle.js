@@ -17,10 +17,17 @@ let isColourChange = 1;
 let isPAll = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  circleCan = createGraphics(windowHeight, windowHeight);
-  width = windowWidth;
-  height = windowHeight;
+  if(windowWidth>2.05*windowHeight){
+    createCanvas(windowWidth, windowHeight);
+    circleCan = createGraphics(windowHeight, windowHeight);
+    width = windowWidth;
+    height = windowHeight;
+  } else {
+    createCanvas(windowWidth, windowHeight);
+    circleCan = createGraphics(windowWidth/2.05, windowWidth/2.05);
+    width = windowWidth;
+    height = windowWidth/2.05;
+  }
   circleX = height/2;
   circleY = height/2;
   rad = height/2 - 20
@@ -35,11 +42,11 @@ function draw() {
   if (!isPAll) {
   background(0, 169, 169);
   fill(0, 0, 30);
-  text("Made by Willy Ch'ng", width-310, height-30);
+  text("Made by ▒▒▒▒▒▒▒▒", width-330, height-30);
   noStroke();
 
   textSize(32);
-  text('count = ' + count.toFixed(2), height+15, 100);
+  text('count = ' + count.toFixed(3), height+15, 100);
 
   circleCan.background(0, 0, 30);
   draw_lines(count);
