@@ -7,7 +7,7 @@ function setup(){
   stroke(255);
   pointX = random(width);
   pointY = random(height);
-  dots = new Array(1000);
+  dots = new Array(1500);
   for(i = 0; i < dots.length; i++){
     dots[i] = new Dot();
   }
@@ -34,6 +34,8 @@ class Dot {
   }
 
   show() {
+    //stroke((this.speed-0.45)/(3.2-0.45)*(255-20) + 20)
+    strokeWeight((this.speed-0.45)/(3.2-0.45)*(1));
     ellipse(this.x,this.y,this.size);
   }
 
