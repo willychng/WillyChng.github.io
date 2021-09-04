@@ -26,16 +26,27 @@
     <h1>Random Number Generator</h1>
     <span>
     <label for="min">Min:</label>
-    <input type="number" id="min" value=1>
+    <input type="number" id="min" value=1 step="1">
     </span>
     <span>
     <label for="max">Max:</label>
-    <input type="number" id="max" value=100>
+    <input type="number" id="max" value=100 step="1">
     </span>
     <button type="button" name="generate" onclick="generate()">Generate</button>
+    <p id="num">Number: <p>
     <script>
-    function generate() {
+    function random(min, max) {
+      console.log(typeof min);
+      console.log(typeof max);
+      const num = Math.round(Math.random() * (max - min)) + min;
+      return num;
+    }
 
+    function generate() {
+      var min = parseInt(document.getElementById("min").value);
+      var max = parseInt(document.getElementById("max").value);
+      var number = random(min, max);
+      document.getElementById("num").innerHTML = "Number: " + number;
     }
     </script>
   </body>
